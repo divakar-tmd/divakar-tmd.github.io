@@ -1,1 +1,0 @@
-# divakar-tmd.github.io
