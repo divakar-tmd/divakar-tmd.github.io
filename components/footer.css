@@ -1,0 +1,33 @@
+/*
+ * FOOTER COMPONENT
+ * Figma node: 218-594
+ * Layout: Vertical, Centered, Gap 8px
+ * Padding: 20px top, 0 bottom
+ * Border-top: 1px solid Lines-primary
+ * Children: Text (heading-vsmall), Text (label-small)
+ */
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--gap-8);
+  padding: var(--padding-20) 0 0 0;
+  border-top: var(--stroke-1) solid var(--color-lines-primary);
+  width: 100%;
+}
+
+/* Footer text */
+.footer__heading {
+  /* Uses .heading-vsmall from style.css */
+  color: var(--color-content-secondary);
+  text-align: center;
+  margin: 0;
+}
+
+.footer__label {
+  /* Uses .label-small from style.css */
+  color: var(--color-content-secondary);
+  text-align: center;
+  margin: 0;
+}

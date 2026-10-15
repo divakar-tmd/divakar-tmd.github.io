@@ -1,0 +1,103 @@
+/*
+ * COMPONENT: Tag
+ * Figma Source: Tag (COMPONENT_SET) — node 19:29
+ *
+ * ───────────────────────────────────────────────────────
+ * EXTRACTION CHECKLIST RESULTS
+ * ───────────────────────────────────────────────────────
+ *
+ * Step 1 — Variants:
+ *   Property 1 = Default
+ *   (Single variant — no state changes like Hover)
+ *
+ * Step 2 — Component Properties:
+ *   Text 1   (TEXT)     default: "Label-s"  → editable label content
+ *   Property 1 (VARIANT) Default            → only one option
+ *
+ * Step 3 — Visual Properties (Property 1=Default):
+ *   size         : 83×28 (natural, expands with content)
+ *   fill         : [] visible: N/A → transparent background (no fill at all)
+ *   stroke       : SOLID #434343 (--color-lines-primary), weight 1px, INSIDE
+ *   cornerRadius : 50px (pill)
+ *   padding      : 4px top/bottom, 16px left/right
+ *   layoutMode   : HORIZONTAL
+ *   itemSpacing  : 0px
+ *   align        : CENTER × CENTER
+ *   effects      : none
+ *   opacity      : 1
+ *
+ * Step 4 — Text Child:
+ *   characters   : "Label-s" (editable via Text 1 property)
+ *   fontName     : Inter Medium
+ *   fontSize     : 14px
+ *   fontWeight   : 500
+ *   lineHeight   : 20px
+ *   letterSpacing: 0px
+ *   textCase     : ORIGINAL
+ *   fill color   : #FEFEFE → --color-content-primary
+ *   → Matches Label/Small type style exactly
+ *
+ * Step 5 — Children Visibility:
+ *   Label-s (TEXT) : always visible — sole child
+ *   No icon slots present in this component.
+ *
+ * Step 6 — Token Mapping:
+ *   background      : transparent (no fill entry)
+ *   stroke #434343  → --color-lines-primary
+ *   stroke 1px      → --stroke-1
+ *   radius 50px     → --radius-50
+ *   padding 4px     → --padding-4
+ *   padding 16px    → --padding-16
+ *   gap 0px         → --gap-0
+ *   text #FEFEFE    → --color-content-primary
+ *   font            → --label-small-* tokens
+ *
+ * ───────────────────────────────────────────────────────
+ * NOTES
+ * ───────────────────────────────────────────────────────
+ * The Tag has only one variant (Default). There is no
+ * hover state defined in Figma, so no :hover CSS is needed.
+ * Stroke is a flat SOLID border — no gradient tricks required.
+ * strokeAlign is INSIDE → use box-shadow inset or border with
+ * box-sizing: border-box to match exactly.
+ */
+
+/* ==========================================
+   Tag — Base
+   ========================================== */
+.tag {
+  /* Layout */
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gap-0);
+
+  /* Sizing */
+  padding: var(--padding-4) var(--padding-16);
+
+  /* Shape */
+  border-radius: var(--radius-50);
+
+  /* Border: 1px INSIDE SOLID #434343 (--color-lines-primary)
+     strokeAlign INSIDE → use border with box-sizing border-box */
+  border: var(--stroke-1) solid var(--color-lines-primary);
+  box-sizing: border-box;
+
+  /* Background: no fill → transparent */
+  background-color: transparent;
+
+  /* Typography — Label/Small */
+  font-family: var(--label-small-font-family);
+  font-size: var(--label-small-font-size);
+  font-weight: var(--label-small-font-weight);
+  line-height: var(--label-small-font-line-height);
+  letter-spacing: var(--label-small-font-space);
+
+  /* Text color: #FEFEFE */
+  color: var(--color-content-primary);
+
+  /* No pointer cursor — Tag is a display-only element */
+  cursor: default;
+  white-space: nowrap;
+}

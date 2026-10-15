@@ -1,0 +1,49 @@
+/*
+ * DESC-LINK COMPONENT
+ * Figma node: 51-295
+ * Layout: Vertical, Gap 32px
+ * Padding: 0px
+ * Children: Description (Horizontal frame), Links (Horizontal frame)
+ */
+
+.desc-link {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-32);
+  padding: 0;
+}
+
+/* Description Container */
+.desc-link__description {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--gap-4);
+  flex-wrap: wrap;
+}
+
+/* Base Description Text */
+.desc-link__text {
+  /* Uses .paragraph-small from style.css */
+  color: var(--color-content-secondary);
+  margin: 0;
+}
+
+/* Highlighted Description Text */
+.desc-link__highlight {
+  /* Uses .paragraph-small from style.css */
+  background: var(--color-gradient-2-1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+}
+
+/* Links Container */
+.desc-link__links {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--gap-16);
+  flex-wrap: wrap;
+}

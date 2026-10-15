@@ -1,0 +1,33 @@
+/*
+ * TEXT-CONTENT COMPONENT
+ * Figma node: 30-3753
+ * Layout: Vertical, Gap 8px
+ * Children: Title (Label-m), Subtitle (Paragraph-s), TextLink (Instance)
+ */
+
+.text-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-8);
+  /* padding: 0 */
+}
+
+/* Title text */
+.text-content__title {
+  /* Uses .label-medium from style.css */
+  color: var(--color-content-primary);
+  margin: 0;
+}
+
+/* Subtitle/Paragraph text */
+.text-content__subtitle {
+  /* Uses .paragraph-small from style.css */
+  color: var(--color-content-secondary);
+  margin: 0;
+}
+
+/* Modifier: Center Alignment */
+.text-content--center {
+  align-items: center;
+  text-align: center;
+}

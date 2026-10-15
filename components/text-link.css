@@ -1,0 +1,107 @@
+/*
+ * COMPONENT: TextLink
+ * Figma Source: TextLink (COMPONENT_SET) — node 25:3657
+ *
+ * ───────────────────────────────────────────────────────
+ * EXTRACTION CHECKLIST RESULTS
+ * ───────────────────────────────────────────────────────
+ *
+ * Step 1 — Variants:
+ *   States: Default, Hover
+ *   Boolean: Show Icon R (default: true)
+ *
+ * Step 2 — Component Properties:
+ *   Text 1         (TEXT)    default: "Text Link"
+ *   Show Icon R    (BOOLEAN) default: true
+ *   States         (VARIANT) default: "Default"
+ *
+ * Step 3 — Visual Properties:
+ *   fills        : [] → transparent
+ *   strokes      : [] → none
+ *   cornerRadius : 0
+ *   padding      : 0 all sides
+ *   layoutMode   : HORIZONTAL
+ *   itemSpacing  : 0
+ *   align        : CENTER × CENTER
+ *
+ * Step 4 — Text Child:
+ *   fontFamily   : Inter
+ *   fontWeight   : Regular (400)
+ *   fontSize     : 16px
+ *   fill         : #2997FF (--color-content-tertiary)
+ *   decoration   : NONE (Default) / UNDERLINE (Hover)
+ *   Maps to Token: Link/Small
+ *
+ * Step 5 — Children Visibility:
+ *   Text Link (TEXT)
+ *   Icon (INSTANCE) — 20x20
+ *
+ * Step 6 — Token Mapping:
+ *   background      : transparent
+ *   color           : var(--color-content-tertiary)
+ *   font properties : var(--link-small-font-*)
+ *   gap             : var(--gap-0)
+ *
+ * ───────────────────────────────────────────────────────
+ */
+
+/* ==========================================
+   TextLink — Base (Default State)
+   ========================================== */
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--gap-0);
+  padding: 0; /* Structural 0, no padding token needed */
+  background: transparent;
+  border: none;
+  cursor: pointer;
+
+  /* Typography — Link/Small */
+  font-family: var(--link-small-font-family);
+  font-size: var(--link-small-font-size);
+  font-weight: var(--link-small-font-weight);
+  line-height: var(--link-small-font-line-height);
+  letter-spacing: var(--link-small-font-space);
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+  
+  /* Color */
+  color: var(--color-content-tertiary);
+  
+  /* Prevent layout stretching */
+  width: max-content;
+}
+
+/* ==========================================
+   TextLink — Hover State (Pointer / Mouse Only)
+   ========================================== */
+@media (hover: hover) {
+  .text-link:hover {
+    text-decoration: underline;
+    text-underline-offset: var(--spacing-4); /* 4px offset to match Figma */
+  }
+}
+
+/* ==========================================
+   TextLink — Pressed / Active State (Touch & Click)
+   ========================================== */
+.text-link:active {
+  opacity: 0.7;
+  text-decoration: underline;
+  text-underline-offset: var(--spacing-4);
+  transition: none; /* Instant feedback on touch down */
+}
+
+/* ==========================================
+   TextLink — Icon Slot
+   ========================================== */
+.text-link__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--spacing-20);
+  height: var(--spacing-20);
+}
+
+

@@ -1,0 +1,316 @@
+/*
+ * TYPE STYLES
+ * Mapped from Figma text styles (Divakar Website)
+ * Uses semantic typography tokens from variables.css
+ */
+
+/* ==========================================
+   Heading/Large — 20/24 · UPPERCASE
+   ========================================== */
+.heading-large {
+  font-family: var(--heading-large-font-family);
+  font-size: var(--heading-large-font-size);
+  font-weight: var(--heading-large-font-weight);
+  line-height: var(--heading-large-font-line-height);
+  letter-spacing: var(--heading-large-font-space);
+  text-transform: uppercase;
+  /* textCase: UPPER — Figma Heading/Large */
+}
+
+/* ==========================================
+   Heading/VSmall — 12/16
+   ========================================== */
+.heading-vsmall {
+  font-family: var(--heading-vsmall-font-family);
+  font-size: var(--heading-vsmall-font-size);
+  font-weight: var(--heading-vsmall-font-weight);
+  line-height: var(--heading-vsmall-font-line-height);
+  letter-spacing: var(--heading-vsmall-font-space);
+  text-transform: uppercase;
+  /* textCase: UPPER — Figma Heading/VSmall */
+}
+
+/* ==========================================
+   Label/Large — 32/40
+   ========================================== */
+.label-large {
+  font-family: var(--label-large-font-family);
+  font-size: var(--label-large-font-size);
+  font-weight: var(--label-large-font-weight);
+  line-height: var(--label-large-font-line-height);
+  letter-spacing: var(--label-large-font-space);
+}
+
+/* ==========================================
+   Label/Medium — 21/26
+   ========================================== */
+.label-medium {
+  font-family: var(--label-medium-font-family);
+  font-size: var(--label-medium-font-size);
+  font-weight: var(--label-medium-font-weight);
+  line-height: var(--label-medium-font-line-height);
+  letter-spacing: var(--label-medium-font-space);
+}
+
+/* ==========================================
+   Label/Small — 14/20
+   ========================================== */
+.label-small {
+  font-family: var(--label-small-font-family);
+  font-size: var(--label-small-font-size);
+  font-weight: var(--label-small-font-weight);
+  line-height: var(--label-small-font-line-height);
+  letter-spacing: var(--label-small-font-space);
+}
+
+/* ==========================================
+   Paragraph/Small — 16/27
+   ========================================== */
+.paragraph-small {
+  font-family: var(--paragraph-small-font-family);
+  font-size: var(--paragraph-small-font-size);
+  font-weight: var(--paragraph-small-font-weight);
+  line-height: var(--paragraph-small-font-line-height);
+  letter-spacing: var(--paragraph-small-font-space);
+}
+
+/* ==========================================
+   Link/Small — 16/20
+   ========================================== */
+.link-small-default,
+a.link-small {
+  font-family: var(--link-small-font-family);
+  font-size: var(--link-small-font-size);
+  font-weight: var(--link-small-font-weight);
+  line-height: var(--link-small-font-line-height);
+  letter-spacing: var(--link-small-font-space);
+  text-decoration: none;
+}
+
+/* ==========================================
+   Link/Small-hover
+   ========================================== */
+.link-small-hover {
+  font-family: var(--link-small-font-family);
+  font-size: var(--link-small-font-size);
+  font-weight: var(--link-small-font-weight);
+  line-height: var(--link-small-font-line-height);
+  letter-spacing: var(--link-small-font-space);
+  text-decoration: underline;
+}
+
+@media (hover: hover) {
+  a.link-small:hover {
+    text-decoration: underline;
+  }
+}
+
+/* ==========================================
+   Base Styles & Layout
+   ========================================== */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-surface-primary);
+  width: 100%;
+}
+
+/* ==========================================
+   Section 1 — Hero
+   ========================================== */
+.hero-section {
+  width: 100%;
+  background: var(--color-gradient-1-1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-lottie {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  display: block;
+}
+
+/* ==========================================
+   Section 2 — Bio
+   ========================================== */
+.bio-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.bio-container {
+  width: 100%;
+  max-width: 1280px;
+  padding: var(--padding-80) var(--padding-16);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ==========================================
+   Section 3 — Projects
+   ========================================== */
+.projects-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.projects-container {
+  width: 100%;
+  max-width: 1280px;
+  padding: var(--padding-40) var(--padding-16);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-40);
+  align-items: center;
+  /* Center the heading if desired, or flex-start */
+}
+
+.projects-grid {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-80);
+}
+
+/* ==========================================
+   Section 4 — After Work Hours
+   ========================================== */
+.social-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.social-container {
+  width: 100%;
+  max-width: 1280px;
+  padding: var(--padding-40) var(--padding-16) 0 var(--padding-16);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-40);
+  align-items: center;
+  /* Center the heading if desired, or flex-start */
+}
+
+.social-grid {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-80);
+  align-items: center;
+}
+
+@media (min-width: 1280px) {
+  .social-grid {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+/* ==========================================
+   Section 5 — Get in Touch
+   ========================================== */
+.get-in-touch-section {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.get-in-touch-container {
+  width: 100%;
+  max-width: 1280px;
+  height: 100%;
+  padding: var(--padding-20) var(--padding-16) var(--padding-20) var(--padding-16);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contact {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gap-40);
+}
+
+.contact__label {
+  color: var(--color-content-secondary);
+  text-align: center;
+}
+
+.contact__email {
+  /* Default to label-medium for mobile */
+  font-family: var(--label-medium-font-family);
+  font-size: var(--label-medium-font-size);
+  font-weight: var(--label-medium-font-weight);
+  line-height: var(--label-medium-font-line-height);
+  letter-spacing: var(--label-medium-font-space);
+
+  background: var(--color-gradient-2-1);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  text-align: center;
+  word-break: break-all;
+}
+
+  @media (min-width: 480px) {
+  .contact__email {
+    /* Scale to label-large for larger screens */
+    font-family: var(--label-large-font-family);
+    font-size: var(--label-large-font-size);
+    font-weight: var(--label-large-font-weight);
+    line-height: var(--label-large-font-line-height);
+    letter-spacing: var(--label-large-font-space);
+  }
+}
+
+/* Copy Email Button — Sustained Copied State Feedback */
+.btn.btn--copied {
+  background-color: var(--color-surface-inverse-primary);
+  color: var(--color-content-inverse-primary);
+}
+
+.btn.btn--copied::before {
+  background: var(--color-gradient-2-2) border-box;
+}
+
+/* ==========================================
+   Section 6 — Error Page (404)
+   ========================================== */
+.error-section {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.error-container {
+  width: 100%;
+  max-width: 1280px;
+  padding: var(--padding-40) var(--padding-16);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--gap-80);
+}
+
+.error-image {
+  max-width: 100%;
+  height: auto;
+}

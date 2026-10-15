@@ -1,0 +1,127 @@
+/*
+ * COMPONENT: Project Card
+ * Figma Source: ProjectCard (COMPONENT_SET) — node 30:3885
+ *
+ * ───────────────────────────────────────────────────────
+ * EXTRACTION CHECKLIST RESULTS
+ * ───────────────────────────────────────────────────────
+ *
+ * Step 1 — Variants:
+ *   Property 1: Web, Tab, Mobile
+ *
+ * Step 2 — Component Properties:
+ *   None explicitly on wrapper except variant.
+ *
+ * Step 3 — Visual Properties:
+ *   fills        : var(--color-surface-secondary)
+ *   strokes      : 1px solid var(--color-lines-primary) INSIDE
+ *   cornerRadius : var(--radius-20)
+ *   layoutMode   : VERTICAL
+ *   itemSpacing  : 0
+ *
+ * Step 4/5 — Children:
+ *   Content (FRAME) — Hug height
+ *     padding    : Web (24px), Tab/Mobile (16px)
+ *     flex-shrink: 0 → hugs its text-content child
+ *   IMG (FRAME) — Fill remaining height
+ *     flex: 1 1 0% → fills all leftover space in the card
+ *     background : var(--color-neural-neutral-001) #FEFEFE (White placeholder)
+ *
+ * Step 6 — Token Mapping:
+ *   background   : var(--color-surface-secondary)
+ *   border       : var(--stroke-1) solid var(--color-lines-primary)
+ *   radius       : var(--radius-20)
+ *   height (tab/mob): 500px
+ *   height (web): 700px
+ *   padding      : var(--padding-24) Web / var(--padding-16) Tab+Mobile
+ *
+ * ── Breakpoint Strategy ─────────────────────────────────
+ * Uses @container query so height adapts to the card's OWN
+ * rendered width — not the viewport. This correctly matches
+ * Figma where the variant switches at the component level,
+ * not the page level.
+ * ───────────────────────────────────────────────────────
+ */
+
+/*
+ * Containment context — must be set on the WRAPPER that
+ * constrains the card's width (e.g. a grid cell or section).
+ * Applied here to a utility class used in the preview page
+ * and on the website page.
+ */
+.project-card-wrapper {
+  container-type: inline-size;
+  width: 100%;
+  max-width: 470px;
+  margin: 0 auto;
+}
+
+@media (min-width: 1280px) {
+  .project-card-wrapper {
+    max-width: 100%;
+  }
+
+  .project-card .text-content {
+    align-items: center;
+    text-align: center;
+  }
+}
+
+/* ==========================================
+   Base styles — Mobile & Tablet (≤ 470px)
+   height: 500px, padding: 16px
+   ========================================== */
+.project-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 500px;
+  border: var(--stroke-1) solid var(--color-lines-primary);
+  background-color: var(--color-surface-secondary);
+  border-radius: var(--radius-20);
+  overflow: hidden;
+  /* clips image to border-radius */
+  text-decoration: none;
+}
+
+/*
+ * Content (Hug) — wraps text-content, never shrinks.
+ */
+.project-card__content {
+  display: flex;
+  flex-direction: column;
+  padding: var(--padding-16);
+  flex-shrink: 0;
+}
+
+/*
+ * IMG (Fill) — expands to absorb remaining space
+ * inside the fixed-height card.
+ */
+.project-card__img {
+  width: 100%;
+  flex: 1 1 0%;
+  background-color: var(--color-neural-neutral-001);
+  /* #FEFEFE – white placeholder */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* ==========================================
+   Web Breakpoint — container width > 800px
+   height: 700px, padding: 24px
+   ========================================== */
+@container (min-width: 800px) {
+  .project-card {
+    height: 700px;
+  }
+
+  .project-card__content {
+    padding: var(--padding-24);
+  }
+
+  .project-card__img {
+    background-position: top center;
+  }
+}

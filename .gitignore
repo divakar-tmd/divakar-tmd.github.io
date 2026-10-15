@@ -1,0 +1,14 @@
+# Development and Preview Files (Keep locally, never upload to GitHub)
+PREVIEW/
+
+# Project Planning & Architecture Notes
+MD files/
+*.md
+
+# Editor and AI settings
+.cursor/
+
+# System / OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini

@@ -1,0 +1,198 @@
+/* 
+* DESIGN SYSTEM VARIABLES 
+* Mapped from Figma design tokens (Divakar Website) 
+* Total Token Count: 115 
+*/
+
+@font-face {
+  font-family: 'Copperplate Gothic Bold';
+  src: url('../assets/fonts/Copperplate Gothic Bold Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Copperplate Gothic Light';
+  src: url('../assets/fonts/Copperplate Gothic Light Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  /* ==========================================
+     1. COLORS (Primitive - 11 Tokens)
+     ========================================== */
+  --color-neural-neutral-001: #FEFEFE;
+  --color-neural-neutral-002: #86868B;
+  --color-neural-neutral-003: #434343;
+  --color-neural-neutral-004: #2E2E2E;
+  --color-neural-neutral-005: #212121;
+  --color-neural-neutral-006: #121212;
+  --color-blue-001: #2997FF;
+  --color-gradient-rose: #FF0268;
+  --color-gradient-wood: #620925;
+  --color-gradient-berry: #2D0685;
+  --color-gradient-violet: #9F01FF;
+
+  /* ==========================================
+     2. COLOR TOKENS (Semantic - 13 Tokens)
+     ========================================== */
+  --color-surface-primary: var(--color-neural-neutral-006);
+  /* #121212 */
+  --color-surface-secondary: var(--color-neural-neutral-005);
+  /* #212121 */
+  --color-surface-tertiary: var(--color-neural-neutral-004);
+  /* #2E2E2E */
+  --color-surface-inverse-primary: var(--color-neural-neutral-001);
+  /* #FEFEFE */
+  --color-lines-primary: var(--color-neural-neutral-003);
+  /* #434343 */
+  --color-content-primary: var(--color-neural-neutral-001);
+  /* #FEFEFE */
+  --color-content-secondary: var(--color-neural-neutral-002);
+  /* #86868B */
+  --color-content-inverse-primary: var(--color-neural-neutral-006);
+  /* #121212 */
+  --color-content-tertiary: var(--color-blue-001);
+  /* #2997FF */
+
+  --color-gradient-1-1: linear-gradient(to right, var(--color-gradient-wood), var(--color-gradient-berry));
+  --color-gradient-1-2: linear-gradient(to right, var(--color-gradient-berry), var(--color-gradient-wood));
+  --color-gradient-2-1: linear-gradient(to right, var(--color-gradient-rose), var(--color-gradient-violet));
+  --color-gradient-2-2: linear-gradient(to right, var(--color-gradient-violet), var(--color-gradient-rose));
+
+  /* ==========================================
+     3. TYPOGRAPHY (Primitive - 22 Tokens)
+     ========================================== */
+  --font-family-style-1: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-family-style-2: 'Copperplate Gothic Bold', 'Copperplate', fantasy, sans-serif;
+  --font-family-style-3: 'Copperplate Gothic Light', 'Copperplate', fantasy, sans-serif;
+
+  --font-size-12: 12px;
+  --font-size-14: 14px;
+  --font-size-16: 16px;
+  --font-size-18: 18px;
+  --font-size-20: 20px;
+  --font-size-21: 21px;
+  --font-size-32: 32px;
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 600;
+
+  --font-line-height-16: 16px;
+  --font-line-height-20: 20px;
+  --font-line-height-24: 24px;
+  --font-line-height-26: 26px;
+  --font-line-height-27: 27px;
+  --font-line-height-40: 40px;
+
+  --font-space-nil: 0px;
+  --font-space-2: 0.4px;
+  --font-space-10: 2px;
+
+  /* ==========================================
+     4. TYPOGRAPHY TOKENS (Semantic - 35 Tokens)
+     ========================================== */
+  /* Heading/Large */
+  --heading-large-font-family: var(--font-family-style-2);
+  --heading-large-font-size: var(--font-size-20);
+  --heading-large-font-weight: var(--font-weight-regular);
+  --heading-large-font-line-height: var(--font-line-height-24);
+  --heading-large-font-space: var(--font-space-10);
+
+  /* Heading/VSmall */
+  --heading-vsmall-font-family: var(--font-family-style-3);
+  --heading-vsmall-font-size: var(--font-size-12);
+  --heading-vsmall-font-weight: var(--font-weight-regular);
+  --heading-vsmall-font-line-height: var(--font-line-height-16);
+  --heading-vsmall-font-space: var(--font-space-2);
+
+  /* Label/Large */
+  --label-large-font-family: var(--font-family-style-1);
+  --label-large-font-size: var(--font-size-32);
+  --label-large-font-weight: var(--font-weight-medium);
+  --label-large-font-line-height: var(--font-line-height-40);
+  --label-large-font-space: var(--font-space-nil);
+
+  /* Label/Medium */
+  --label-medium-font-family: var(--font-family-style-1);
+  --label-medium-font-size: var(--font-size-21);
+  --label-medium-font-weight: var(--font-weight-regular);
+  --label-medium-font-line-height: var(--font-line-height-26);
+  --label-medium-font-space: var(--font-space-nil);
+
+  /* Label/Small */
+  --label-small-font-family: var(--font-family-style-1);
+  --label-small-font-size: var(--font-size-14);
+  --label-small-font-weight: var(--font-weight-medium);
+  --label-small-font-line-height: var(--font-line-height-20);
+  --label-small-font-space: var(--font-space-nil);
+
+  /* Paragraph/Small */
+  --paragraph-small-font-family: var(--font-family-style-1);
+  --paragraph-small-font-size: var(--font-size-16);
+  --paragraph-small-font-weight: var(--font-weight-regular);
+  --paragraph-small-font-line-height: var(--font-line-height-27);
+  --paragraph-small-font-space: var(--font-space-2);
+
+  /* Link/Small */
+  --link-small-font-family: var(--font-family-style-1);
+  --link-small-font-size: var(--font-size-16);
+  --link-small-font-weight: var(--font-weight-regular);
+  --link-small-font-line-height: var(--font-line-height-20);
+  --link-small-font-space: var(--font-space-nil);
+
+  /* ==========================================
+     5. SPACING (Primitive - 13 Tokens)
+     ========================================== */
+  --spacing-0: 0px;
+  --spacing-1: 1px;
+  --spacing-2: 2px;
+  --spacing-4: 4px;
+  --spacing-8: 8px;
+  --spacing-12: 12px;
+  --spacing-16: 16px;
+  --spacing-20: 20px;
+  --spacing-24: 24px;
+  --spacing-32: 32px;
+  --spacing-40: 40px;
+  --spacing-50: 50px;
+  --spacing-80: 80px;
+
+  /* ==========================================
+     6. SPACING TOKENS (Semantic - 19 Tokens)
+     ========================================== */
+  /* Gaps */
+  --gap-0: var(--spacing-0);
+  --gap-4: var(--spacing-4);
+  --gap-8: var(--spacing-8);
+  --gap-16: var(--spacing-16);
+  --gap-32: var(--spacing-32);
+  --gap-40: var(--spacing-40);
+  --gap-80: var(--spacing-80);
+
+  /* Padding */
+  --padding-4: var(--spacing-4);
+  --padding-12: var(--spacing-12);
+  --padding-16: var(--spacing-16);
+  --padding-20: var(--spacing-20);
+  --padding-24: var(--spacing-24);
+  --padding-32: var(--spacing-32);
+  --padding-40: var(--spacing-40);
+  --padding-80: var(--spacing-80);
+
+  /* Corner Radius */
+  --radius-20: var(--spacing-20);
+  --radius-50: var(--spacing-50);
+
+  /* Stroke Widths */
+  --stroke-1: var(--spacing-1);
+  --stroke-2: var(--spacing-2);
+
+  /* ==========================================
+     7. BOOLEAN (2 Tokens)
+     ========================================== */
+  --boolean-off: 0;
+  --boolean-on: 1;
+}

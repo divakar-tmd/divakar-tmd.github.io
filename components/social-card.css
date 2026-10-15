@@ -1,0 +1,61 @@
+/*
+ * SOCIAL CARD COMPONENT
+ * Main container for social/project items
+ */
+
+.social-card {
+  display: flex;
+  flex-direction: column;
+  max-width: 470px;
+  width: 100%;
+  height: 500px;
+  border-radius: var(--radius-20);
+  background-color: var(--color-surface-secondary);
+  border: var(--stroke-1) solid var(--color-lines-primary);
+  overflow: hidden;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+  text-decoration: none;
+  color: inherit;
+}
+
+@media (hover: hover) {
+  .social-card:hover {
+    background-color: var(--color-surface-tertiary);
+    cursor: pointer;
+  }
+}
+
+/* Pressed / Active State (Touch & Click) */
+.social-card:active {
+  transform: scale(0.98);
+  background-color: var(--color-surface-tertiary);
+  transition: none; /* Instant feedback on touch down */
+}
+
+.social-card__icon {
+  width: 100%;
+  height: 250px;
+  flex: 0 0 250px; /* Fixed height for icon part as per Figma */
+  background: var(--color-gradient-1-1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  /* Provides contextual color for any SVG sprite inside */
+  color: var(--color-content-primary);
+}
+
+.social-card__icon .icon {
+  width: 100px;
+  height: 100px;
+  display: block;
+}
+
+.social-card__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: var(--padding-16);
+  gap: var(--spacing-20);
+  flex: 1 1 auto;
+}

@@ -1,0 +1,99 @@
+/*
+ * COMPONENT: Heading
+ * Figma Source: Heading (COMPONENT) — node 57:678
+ *
+ * ───────────────────────────────────────────────────────
+ * EXTRACTION CHECKLIST RESULTS
+ * ───────────────────────────────────────────────────────
+ *
+ * Step 1 — Variants:
+ *   Single COMPONENT (not a COMPONENT_SET) — no variants.
+ *   One TEXT property: Heading (default: "HEADING")
+ *
+ * Step 2 — Component Properties:
+ *   Heading (TEXT)  default: "HEADING"  → editable heading content
+ *   (No VARIANT or BOOLEAN properties)
+ *
+ * Step 3 — Visual Properties:
+ *   size         : 119×24 (natural, expands with content)
+ *   fills        : [] → transparent background (no container fill)
+ *   strokes      : [] → no border
+ *   cornerRadius : 0
+ *   padding      : 0 all sides
+ *   layoutMode   : HORIZONTAL
+ *   itemSpacing  : 0
+ *   align        : CENTER × CENTER
+ *   effects      : none
+ *   opacity      : 1
+ *
+ * Step 4 — Text Child (57:676 "HEADING"):
+ *   fontFamily   : Copperplate Gothic Bold
+ *   fontStyle    : Regular
+ *   fontWeight   : 400
+ *   fontSize     : 20px
+ *   lineHeight   : 24px
+ *   letterSpacing: 2px
+ *   textCase     : UPPER (text-transform: uppercase)
+ *   fill         : GRADIENT_LINEAR
+ *                  stop 0   → #FF0268 (--color-gradient-rose)
+ *                  stop 1   → #9F01FF (--color-gradient-violet)
+ *                  → matches --color-gradient-2-1 (rose → violet)
+ *
+ * Step 5 — Children Visibility:
+ *   HEADING (TEXT) : always visible — sole child
+ *   No icon slots.
+ *
+ * Step 6 — Token Mapping:
+ *   background      : transparent (no fill)
+ *   border          : none (no strokes)
+ *   padding         : 0 → --spacing-0
+ *   font family     : --heading-large-font-family (Copperplate Gothic Bold)
+ *   font size       : --heading-large-font-size (20px)
+ *   font weight     : --heading-large-font-weight (400 Regular)
+ *   line-height     : --heading-large-font-line-height (24px)
+ *   letter-spacing  : --heading-large-font-space (2px = --font-space-10)
+ *   text-transform  : uppercase (textCase: UPPER)
+ *   gradient fill   : --color-gradient-2-1 (linear rose → violet)
+ *
+ * ───────────────────────────────────────────────────────
+ * CSS TECHNIQUE NOTES
+ * ───────────────────────────────────────────────────────
+ *
+ * Gradient text:
+ *   CSS does not support gradient fills on text natively.
+ *   We use the background-clip: text technique:
+ *     1. Set `background` to the gradient
+ *     2. Set `color: transparent` so the background shows through
+ *     3. Set `-webkit-background-clip: text` + `background-clip: text`
+ *   This is widely supported in all modern browsers.
+ */
+
+/* ==========================================
+   Heading — Base
+   ========================================== */
+.heading {
+  /* Typography — Heading/Large */
+  font-family: var(--heading-large-font-family);
+  font-size: var(--heading-large-font-size);
+  font-weight: var(--heading-large-font-weight);
+  line-height: var(--heading-large-font-line-height);
+  letter-spacing: var(--heading-large-font-space);
+  text-transform: uppercase; /* textCase: UPPER */
+
+  /*
+   * Gradient text — background-clip technique
+   * Gradient2.1: rose (#FF0268) → violet (#9F01FF)
+   */
+  background: var(--color-gradient-2-1);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent; /* fallback */
+
+  /* No container background or border */
+  background-color: unset; /* gradient is the background — keep as is */
+
+  /* Inline-block needed so background-clip: text works on block-level elements */
+  display: inline-block;
+  width: max-content;
+}

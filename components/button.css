@@ -1,0 +1,204 @@
+/*
+ * COMPONENT: Button
+ * Figma Source: Button (COMPONENT_SET) — node 216:1249
+ *
+ * ───────────────────────────────────────────────────────
+ * EXTRACTION CHECKLIST RESULTS
+ * ───────────────────────────────────────────────────────
+ *
+ * Step 1 — Variants:
+ *   States = Default | Hover
+ *
+ * Step 2 — Component Properties:
+ *   Text 1       (TEXT)     default: "Label-s"
+ *   Show Icon L  (BOOLEAN)  default: false  → controls left icon visibility
+ *   Show Icon R  (BOOLEAN)  default: false  → controls right icon visibility
+ *   States       (VARIANT)  Default | Hover
+ *
+ * Step 3 — Visual Properties:
+ *
+ *   SHARED (both states):
+ *     size         : 99×44 (natural, expands with content)
+ *     padding      : 12px top/bottom, 24px left/right
+ *     cornerRadius : 50px (pill)
+ *     layoutMode   : HORIZONTAL
+ *     itemSpacing  : 4px
+ *     align        : CENTER × CENTER
+ *     strokeWeight : 2px
+ *     strokeAlign  : INSIDE
+ *     effects      : none
+ *     opacity      : 1
+ *
+ *   DEFAULT:
+ *     fill         : #FEFEFE — visible: FALSE (transparent background)
+ *     stroke       : GRADIENT_LINEAR  #FF0268 → #9F01FF  (Gradient2.1)
+ *     label color  : #FEFEFE (white)
+ *
+ *   HOVER:
+ *     fill         : #FEFEFE — visible: TRUE (white background)
+ *     stroke       : GRADIENT_LINEAR  #9F01FF → #FF0268  (Gradient2.2 — reversed)
+ *     label color  : #121212 (dark)
+ *
+ * Step 4 — Text Child:
+ *     Label/Small style: Inter Medium 14/20, letter-spacing 0px, textCase ORIGINAL
+ *
+ * Step 5 — Children Visibility:
+ *     Icon (left)  : hidden by default (Show Icon L = false)
+ *     Label-s      : always visible
+ *     Icon (right) : hidden by default (Show Icon R = false)
+ *     → Icon visibility is controlled by HTML presence, not CSS.
+ *
+ * Step 6 — Token Mapping:
+ *     #FEFEFE         → --color-surface-inverse-primary / --color-content-primary
+ *     #121212         → --color-content-inverse-primary
+ *     #FF0268→#9F01FF → --color-gradient-2-1
+ *     #9F01FF→#FF0268 → --color-gradient-2-2
+ *     padding 12px    → --padding-12
+ *     padding 24px    → --padding-24
+ *     radius 50px     → --radius-50
+ *     gap 4px         → --gap-4
+ *     stroke 2px      → --stroke-2
+ *     font            → --label-small-* tokens
+ *
+ * ───────────────────────────────────────────────────────
+ * CSS TECHNIQUE NOTES
+ * ───────────────────────────────────────────────────────
+ *
+ * Gradient border with border-radius:
+ *   CSS `border-image` does not support `border-radius`.
+ *   We use a ::before pseudo-element with the `-webkit-mask` trick
+ *   to create a gradient ring that respects the pill shape.
+ *   The mask carves out the padding-box area, leaving only
+ *   the border area (= border thickness) showing the gradient.
+ */
+
+/* ==========================================
+   Button — Base
+   ========================================== */
+.btn {
+  /* Layout */
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gap-4);
+
+  /* Sizing */
+  padding: var(--padding-12) var(--padding-24);
+
+  /* Shape */
+  border-radius: var(--radius-50);
+  border: none; /* native border removed — gradient handled via ::before */
+
+  /* Default state: fill is visible: false → transparent */
+  background-color: transparent;
+
+  /* Typography — Label/Small */
+  font-family: var(--label-small-font-family);
+  font-size: var(--label-small-font-size);
+  font-weight: var(--label-small-font-weight);
+  line-height: var(--label-small-font-line-height);
+  letter-spacing: var(--label-small-font-space);
+
+  /* Default state: label color #FEFEFE */
+  color: var(--color-content-primary);
+
+  /* Stacking context for ::before */
+  position: relative;
+  isolation: isolate;
+
+  /* Interaction */
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+
+  /* Transitions */
+  transition:
+    color 0.25s ease,
+    background-color 0.25s ease,
+    transform 0.15s ease;
+}
+
+/* ==========================================
+   Gradient Border — ::before pseudo-element
+   ========================================== */
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: var(--stroke-2) solid transparent; /* 2px = border thickness */
+
+  /* Default state gradient: rose → violet (Gradient2.1) */
+  background: var(--color-gradient-2-1) border-box;
+
+  /*
+   * Mask trick: two full masks stacked.
+   * padding-box mask + border-box mask with XOR compositing
+   * = only the border ring (2px border area) shows the gradient.
+   */
+  -webkit-mask:
+    linear-gradient(#fff 0 0) padding-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#fff 0 0) padding-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+
+  /* Behind button content */
+  z-index: -1;
+
+  /* Transition for gradient direction flip */
+  transition: background 0.25s ease;
+}
+
+/* ==========================================
+   Button — Hover State (Pointer / Mouse Only)
+   ========================================== */
+@media (hover: hover) {
+  .btn:hover {
+    /* Hover: fill becomes visible → #FEFEFE white */
+    background-color: var(--color-surface-inverse-primary);
+
+    /* Hover: label color flips to #121212 dark */
+    color: var(--color-content-inverse-primary);
+  }
+
+  .btn:hover::before {
+    /* Hover: gradient reverses → violet → rose (Gradient2.2) */
+    background: var(--color-gradient-2-2) border-box;
+  }
+}
+
+/* ==========================================
+   Button — Pressed / Active State (Touch & Click)
+   ========================================== */
+.btn:active {
+  /* 16% black overlay on top of surface-inverse-primary (no shrink) */
+  background-color: var(--color-surface-inverse-primary);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.16), rgba(0, 0, 0, 0.16));
+  color: var(--color-content-inverse-primary);
+  transition: none; /* Instant feedback on touch/click down */
+}
+
+.btn:active::before {
+  background: var(--color-gradient-2-2) border-box;
+}
+
+/* ==========================================
+   Icon Slot — 20×20px
+   Controlled by HTML presence: if the element
+   is in the markup it shows; if absent, nothing renders.
+   ========================================== */
+.btn__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--spacing-20);
+  height: var(--spacing-20);
+  flex-shrink: 0;
+
+  /* Inherit label color so icon tracks state transitions */
+  color: inherit;
+}
