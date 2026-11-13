@@ -149,18 +149,61 @@ body {
   padding: var(--padding-80) var(--padding-16);
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  gap: var(--gap-32);
+}
+
+.bio-title {
+  color: var(--color-content-primary);
+  max-width: 560px;
+  margin: 0;
+}
+
+.bio-subtitle {
+  color: var(--color-content-secondary);
+  margin: 0;
+}
+
+.bio-highlight {
+  background: var(--color-gradient-2-1);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.bio-links {
+  display: flex;
+  flex-direction: row;
   align-items: center;
+  justify-content: flex-start;
+  gap: var(--gap-16);
+  flex-wrap: wrap;
+}
+
+@media (min-width: 501px) {
+  .bio-container {
+    align-items: center;
+    text-align: center;
+  }
+
+  .bio-links {
+    justify-content: center;
+  }
 }
 
 /* ==========================================
-   Section 3 — Projects
+   Section 3 — Side Projects & Section 4 — Projects
    ========================================== */
+.side-projects-section,
 .projects-section {
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
+.side-projects-container,
 .projects-container {
   width: 100%;
   max-width: 1280px;
@@ -172,6 +215,7 @@ body {
   /* Center the heading if desired, or flex-start */
 }
 
+.side-projects-grid,
 .projects-grid {
   width: 100%;
   display: flex;
