@@ -1,0 +1,182 @@
+/*
+ * COMPONENT: Lab Tile
+ *
+ * ───────────────────────────────────────────────────────
+ * SPECIFICATIONS
+ * ───────────────────────────────────────────────────────
+ *
+ * Variants:
+ *   platform : desktop, tablet, mobile
+ *   size     : small, medium
+ *
+ * Structure:
+ *   1. Outer Tile Wrapper (.lab-tile)
+ *      - layoutMode   : VERTICAL (flex-direction: column)
+ *      - itemSpacing  : var(--gap-0) (0px; spacing handled by slot top padding)
+ *      - background   : transparent
+ *      - border       : none
+ *      - width        : matches image width
+ *      - height       : Hug contents
+ *
+ *   2. Top Image Wrapper (.lab-tile__img)
+ *      - cornerRadius : var(--radius-20) (20px)
+ *      - background   : var(--color-surface-secondary) (#212121 placeholder)
+ *      - Dimensions by Platform × Size:
+ *        • Desktop — Small: 372×452 | Medium: 696×452
+ *        • Tablet  — Small: 344×416 | Medium: 644×416
+ *        • Mobile  — Small: 260×316 | Medium: 260×316
+ *
+ *   3. Bottom Custom Node Wrapper / Slot (.lab-tile__slot)
+ *      - width        : 100% (Fill container)
+ *      - height       : Hug contents
+ *      - padding      : top 28px, right 16px, bottom 8px, left 16px
+ *                       (var(--padding-28) var(--padding-16) var(--padding-8) var(--padding-16))
+ * ───────────────────────────────────────────────────────
+ */
+
+/* ==========================================
+   Base Styles — Mobile Default (360px – 767px)
+   Small & Medium: 260px × 316px
+   ========================================== */
+.lab-tile {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-0);
+  background-color: transparent;
+  border: none;
+  width: 260px;
+  height: auto;
+}
+
+.lab-tile__img {
+  width: 100%;
+  height: 316px;
+  flex-shrink: 0;
+  border-radius: var(--radius-20);
+  background-color: var(--color-surface-secondary);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.lab-tile__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.lab-tile__slot {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  padding: var(--padding-28) var(--padding-16) var(--padding-8) var(--padding-16);
+  box-sizing: border-box;
+}
+
+.lab-tile__text {
+  color: var(--color-content-secondary);
+  margin: 0;
+}
+
+.lab-tile__title {
+  color: var(--color-content-primary);
+}
+
+/* ==========================================
+   Responsive Breakpoints (Live Viewport)
+   ========================================== */
+
+/* Tablet Breakpoint (768px – 1279px) */
+@media (min-width: 768px) {
+  .lab-tile,
+  .lab-tile--small {
+    width: 344px;
+  }
+
+  .lab-tile .lab-tile__img,
+  .lab-tile--small .lab-tile__img {
+    height: 416px;
+  }
+
+  .lab-tile--medium {
+    width: 644px;
+  }
+
+  .lab-tile--medium .lab-tile__img {
+    height: 416px;
+  }
+}
+
+/* Desktop Breakpoint (≥ 1280px) */
+@media (min-width: 1280px) {
+  .lab-tile,
+  .lab-tile--small {
+    width: 372px;
+  }
+
+  .lab-tile .lab-tile__img,
+  .lab-tile--small .lab-tile__img {
+    height: 452px;
+  }
+
+  .lab-tile--medium {
+    width: 696px;
+  }
+
+  .lab-tile--medium .lab-tile__img {
+    height: 452px;
+  }
+}
+
+/* ==========================================
+   Explicit Platform Modifiers (For Specimen / Static Variant Pinning)
+   ========================================== */
+
+/* Mobile Explicit */
+.lab-tile--mobile.lab-tile--small,
+.lab-tile--mobile.lab-tile--medium {
+  width: 260px;
+}
+
+.lab-tile--mobile.lab-tile--small .lab-tile__img,
+.lab-tile--mobile.lab-tile--medium .lab-tile__img {
+  height: 316px;
+}
+
+/* Tablet Explicit */
+.lab-tile--tablet.lab-tile--small {
+  width: 344px;
+}
+
+.lab-tile--tablet.lab-tile--small .lab-tile__img {
+  height: 416px;
+}
+
+.lab-tile--tablet.lab-tile--medium {
+  width: 644px;
+}
+
+.lab-tile--tablet.lab-tile--medium .lab-tile__img {
+  height: 416px;
+}
+
+/* Desktop Explicit */
+.lab-tile--desktop.lab-tile--small {
+  width: 372px;
+}
+
+.lab-tile--desktop.lab-tile--small .lab-tile__img {
+  height: 452px;
+}
+
+.lab-tile--desktop.lab-tile--medium {
+  width: 696px;
+}
+
+.lab-tile--desktop.lab-tile--medium .lab-tile__img {
+  height: 452px;
+}

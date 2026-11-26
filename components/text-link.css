@@ -7,10 +7,12 @@
  * ───────────────────────────────────────────────────────
  *
  * Step 1 — Variants:
- *   States: Default, Hover
- *   Boolean: Show Icon R (default: true)
+ *   Hierarchy: Primary (default), Secondary, Tertiary
+ *   States   : Default, Hover, Pressed
+ *   Boolean  : Show Icon R (default: true)
  *
  * Step 2 — Component Properties:
+ *   Hierarchy      (VARIANT) default: "Primary" (Primary | Secondary | Tertiary)
  *   Text 1         (TEXT)    default: "Text Link"
  *   Show Icon R    (BOOLEAN) default: true
  *   States         (VARIANT) default: "Default"
@@ -28,8 +30,11 @@
  *   fontFamily   : Inter
  *   fontWeight   : Regular (400)
  *   fontSize     : 16px
- *   fill         : #2997FF (--color-content-tertiary)
- *   decoration   : NONE (Default) / UNDERLINE (Hover)
+ *   fill         :
+ *     - Primary   : #2997FF (--color-content-tertiary)
+ *     - Secondary : #FEFEFE (--color-content-primary)
+ *     - Tertiary  : #86868B (--color-content-secondary)
+ *   decoration   : NONE (Default) / UNDERLINE (Hover & Pressed)
  *   Maps to Token: Link/Small
  *
  * Step 5 — Children Visibility:
@@ -37,16 +42,18 @@
  *   Icon (INSTANCE) — 20x20
  *
  * Step 6 — Token Mapping:
- *   background      : transparent
- *   color           : var(--color-content-tertiary)
- *   font properties : var(--link-small-font-*)
- *   gap             : var(--gap-0)
+ *   background          : transparent
+ *   color (Primary)     : var(--color-content-tertiary)
+ *   color (Secondary)   : var(--color-content-primary)
+ *   color (Tertiary)    : var(--color-content-secondary)
+ *   font properties     : var(--link-small-font-*)
+ *   gap                 : var(--gap-0)
  *
  * ───────────────────────────────────────────────────────
  */
 
 /* ==========================================
-   TextLink — Base (Default State)
+   TextLink — Base (Default State · Primary Hierarchy)
    ========================================== */
 .text-link {
   display: inline-flex;
@@ -66,11 +73,26 @@
   text-decoration: none;
   transition: opacity 0.15s ease;
   
-  /* Color */
+  /* Color — Primary (Default) */
   color: var(--color-content-tertiary);
   
   /* Prevent layout stretching */
   width: max-content;
+}
+
+/* ==========================================
+   TextLink — Hierarchy Variants
+   ========================================== */
+.text-link--primary {
+  color: var(--color-content-tertiary);
+}
+
+.text-link--secondary {
+  color: var(--color-content-primary);
+}
+
+.text-link--tertiary {
+  color: var(--color-content-secondary);
 }
 
 /* ==========================================
@@ -102,6 +124,7 @@
   justify-content: center;
   width: var(--spacing-20);
   height: var(--spacing-20);
+  color: inherit;
 }
 
 

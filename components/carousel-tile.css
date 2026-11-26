@@ -1,0 +1,154 @@
+/*
+ * COMPONENT: Carousel Tile
+ *
+ * ───────────────────────────────────────────────────────
+ * SPECIFICATIONS
+ * ───────────────────────────────────────────────────────
+ *
+ * Variants:
+ *   platform : desktop, tablet, mobile (mapped with lab-tile viewport & modifiers)
+ *
+ * Nested Components:
+ *   1. Lab Tile (components/lab-tile.css) — supports any size (small, medium, or mixed)
+ *   2. Icon Button (components/icon-button.css) — Left & Right navigation buttons (#icon-cus005)
+ *
+ * Structure:
+ *   1. Outer Container (.carousel-tile)
+ *      - layoutMode   : VERTICAL (flex-direction: column)
+ *      - itemSpacing  : var(--gap-20) (20px between tile track and bottom nav)
+ *      - padding      : var(--spacing-0) (0px)
+ *      - width        : 100%
+ *
+ *   2. Horizontal Tile Track (.carousel-tile__track)
+ *      - layoutMode   : HORIZONTAL (flex-direction: row)
+ *      - itemSpacing  : var(--gap-22) (22px between lab-tile items)
+ *      - scroll-snap  : x mandatory (smooth snap on swipe/slide & button click)
+ *      - scrollbar    : hidden
+ *
+ *   3. Bottom Navigation Row (.carousel-tile__nav)
+ *      - layoutMode   : HORIZONTAL (flex-direction: row)
+ *      - alignment    : Bottom-Right (justify-content: flex-end)
+ *      - itemSpacing  : var(--gap-20) (20px between Left & Right icon-buttons)
+ *      - icons        : #icon-cus005 (Left button rotated 180deg)
+ * ───────────────────────────────────────────────────────
+ */
+
+/* ==========================================
+   1. Outer Carousel Container
+   ========================================== */
+.carousel-tile {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-32);
+  padding: var(--spacing-0);
+  width: 100%;
+  background-color: transparent;
+  border: none;
+}
+
+/* ==========================================
+   2. Horizontal Tile Track (Scroll & Snap)
+   ========================================== */
+.carousel-tile__track {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--gap-22);
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE / Edge */
+}
+
+.carousel-tile__track::-webkit-scrollbar {
+  display: none;
+  /* Chrome / Safari / WebKit */
+}
+
+/* Direct Lab Tile children snap cleanly to the start edge */
+.carousel-tile__track>.lab-tile {
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+/* ==========================================
+   3. Bottom-Right Navigation Controls
+   ========================================== */
+.carousel-tile__nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--gap-20);
+  width: 100%;
+}
+
+/* Left navigation button reuses #icon-cus005 rotated 180deg */
+.carousel-tile__nav-btn--prev .icon {
+  transform: rotate(180deg);
+}
+
+/* ==========================================
+   4. Platform Mapping with Nested Lab Tile
+      (Responsive viewport is handled automatically by lab-tile.css media queries;
+       explicit modifiers below sync nested lab-tiles when pinned to a platform)
+   ========================================== */
+
+/* Mobile Explicit (360px – 767px equivalent) */
+.carousel-tile--mobile .lab-tile,
+.carousel-tile--mobile .lab-tile--small,
+.carousel-tile--mobile .lab-tile--medium {
+  width: 260px;
+}
+
+.carousel-tile--mobile .lab-tile .lab-tile__img,
+.carousel-tile--mobile .lab-tile--small .lab-tile__img,
+.carousel-tile--mobile .lab-tile--medium .lab-tile__img {
+  height: 316px;
+}
+
+/* Tablet Explicit (768px – 1279px equivalent) */
+.carousel-tile--tablet .lab-tile,
+.carousel-tile--tablet .lab-tile--small {
+  width: 344px;
+}
+
+.carousel-tile--tablet .lab-tile .lab-tile__img,
+.carousel-tile--tablet .lab-tile--small .lab-tile__img {
+  height: 416px;
+}
+
+.carousel-tile--tablet .lab-tile--medium {
+  width: 644px;
+}
+
+.carousel-tile--tablet .lab-tile--medium .lab-tile__img {
+  height: 416px;
+}
+
+/* Desktop Explicit (≥ 1280px equivalent) */
+.carousel-tile--desktop .lab-tile,
+.carousel-tile--desktop .lab-tile--small {
+  width: 372px;
+}
+
+.carousel-tile--desktop .lab-tile .lab-tile__img,
+.carousel-tile--desktop .lab-tile--small .lab-tile__img {
+  height: 452px;
+}
+
+.carousel-tile--desktop .lab-tile--medium {
+  width: 696px;
+}
+
+.carousel-tile--desktop .lab-tile--medium .lab-tile__img {
+  height: 452px;
+}

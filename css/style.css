@@ -224,38 +224,63 @@ body {
 }
 
 /* ==========================================
-   Section 4 — After Work Hours
+   Section 5 — After Work Hours (Lab)
    ========================================== */
-.social-section {
+.lab-section {
   width: 100%;
   display: flex;
   justify-content: center;
+  overflow-x: clip;
 }
 
-.social-container {
+.lab-container {
+  --lab-gutter: max(var(--padding-16), calc((100% - 1280px) / 2));
   width: 100%;
-  max-width: 1280px;
-  padding: var(--padding-40) var(--padding-16) 0 var(--padding-16);
+  padding: var(--padding-40) 0 0 0;
   display: flex;
   flex-direction: column;
   gap: var(--gap-40);
   align-items: center;
-  /* Center the heading if desired, or flex-start */
+  box-sizing: border-box;
 }
 
-.social-grid {
+.lab-header {
   width: 100%;
+  box-sizing: border-box;
+  padding-inline: var(--lab-gutter);
   display: flex;
   flex-direction: column;
-  gap: var(--gap-80);
-  align-items: center;
+  align-items: flex-start;
+  text-align: left;
+  gap: var(--gap-20);
 }
 
-@media (min-width: 1280px) {
-  .social-grid {
-    flex-direction: row;
-    justify-content: center;
-  }
+.lab-header__text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--gap-8);
+}
+
+.lab-header__eyebrow {
+  color: var(--color-content-secondary);
+  margin: 0;
+}
+
+.lab-header__title {
+  color: var(--color-content-primary);
+  margin: 0;
+}
+
+.lab-container .carousel-tile__track {
+  box-sizing: border-box;
+  padding-inline: var(--lab-gutter);
+  scroll-padding-inline: var(--lab-gutter);
+}
+
+.lab-container .carousel-tile__nav {
+  box-sizing: border-box;
+  padding-inline: var(--lab-gutter);
 }
 
 /* ==========================================
@@ -278,6 +303,7 @@ body {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  box-sizing: border-box;
 }
 
 .contact {
