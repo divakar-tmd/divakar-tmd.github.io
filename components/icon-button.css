@@ -1,0 +1,92 @@
+/*
+ * COMPONENT: Icon Button
+ *
+ * ───────────────────────────────────────────────────────
+ * SPECIFICATIONS
+ * ───────────────────────────────────────────────────────
+ *
+ * Variants:
+ *   size  : medium (36×36px)
+ *   state : default, hover, pressed, disabled
+ *
+ * Visual Properties:
+ *   size         : 36×36px
+ *   icon slot    : 20×20px (var(--spacing-20)), default placeholder #icon-pla001
+ *   cornerRadius : fully rounded (var(--radius-50))
+ *   border       : none
+ *   content color: var(--color-content-primary) (#FEFEFE)
+ *
+ * States:
+ *   DEFAULT  : background var(--color-surface-secondary) (#212121)
+ *   HOVER    : var(--color-surface-secondary) + 4% white overlay (rgba(255, 255, 255, 0.04))
+ *   PRESSED  : var(--color-surface-secondary) + 8% white overlay (rgba(255, 255, 255, 0.08))
+ *   DISABLED : 50% reduced opacity from default state (opacity: 0.5), cursor: not-allowed
+ * ───────────────────────────────────────────────────────
+ */
+
+/* ==========================================
+   Icon Button — Base (Size: Medium = 36×36px)
+   ========================================== */
+.icon-button,
+.icon-button--medium {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border-radius: var(--radius-50);
+  border: none;
+  background-color: var(--color-surface-secondary);
+  color: var(--color-content-primary);
+  cursor: pointer;
+  text-decoration: none;
+  flex-shrink: 0;
+  transition:
+    background-color 0.2s ease,
+    opacity 0.2s ease;
+}
+
+/* ==========================================
+   Icon Button — Hover State (Pointer / Mouse Only)
+   ========================================== */
+@media (hover: hover) {
+  .icon-button:hover:not(:disabled):not(.icon-button--disabled):not([aria-disabled="true"]) {
+    background-color: var(--color-surface-secondary);
+    background-image: linear-gradient(rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.04));
+  }
+}
+
+/* ==========================================
+   Icon Button — Pressed / Active State (Touch & Click)
+   ========================================== */
+.icon-button:active:not(:disabled):not(.icon-button--disabled):not([aria-disabled="true"]) {
+  background-color: var(--color-surface-secondary);
+  background-image: linear-gradient(rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.08));
+  transition: none; /* Instant feedback on touch/click down */
+}
+
+/* ==========================================
+   Icon Button — Disabled State
+   ========================================== */
+.icon-button:disabled,
+.icon-button.icon-button--disabled,
+.icon-button[aria-disabled="true"] {
+  background-color: var(--color-surface-secondary);
+  background-image: none;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ==========================================
+   Icon Slot — 20×20px
+   ========================================== */
+.icon-button__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--spacing-20);
+  height: var(--spacing-20);
+  flex-shrink: 0;
+  color: inherit;
+}

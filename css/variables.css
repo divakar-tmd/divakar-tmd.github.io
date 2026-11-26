@@ -144,7 +144,7 @@
   --link-small-font-space: var(--font-space-nil);
 
   /* ==========================================
-     5. SPACING (Primitive - 13 Tokens)
+     5. SPACING (Primitive - 14 Tokens)
      ========================================== */
   --spacing-0: 0px;
   --spacing-1: 1px;
@@ -154,30 +154,36 @@
   --spacing-12: 12px;
   --spacing-16: 16px;
   --spacing-20: 20px;
+  --spacing-22: 22px;
   --spacing-24: 24px;
+  --spacing-28: 28px;
   --spacing-32: 32px;
   --spacing-40: 40px;
   --spacing-50: 50px;
   --spacing-80: 80px;
 
   /* ==========================================
-     6. SPACING TOKENS (Semantic - 19 Tokens)
+     6. SPACING TOKENS (Semantic - 21 Tokens)
      ========================================== */
   /* Gaps */
   --gap-0: var(--spacing-0);
   --gap-4: var(--spacing-4);
   --gap-8: var(--spacing-8);
   --gap-16: var(--spacing-16);
+  --gap-20: var(--spacing-20);
+  --gap-22: var(--spacing-22);
   --gap-32: var(--spacing-32);
   --gap-40: var(--spacing-40);
   --gap-80: var(--spacing-80);
 
   /* Padding */
   --padding-4: var(--spacing-4);
+  --padding-8: var(--spacing-8);
   --padding-12: var(--spacing-12);
   --padding-16: var(--spacing-16);
   --padding-20: var(--spacing-20);
   --padding-24: var(--spacing-24);
+  --padding-28: var(--spacing-28);
   --padding-32: var(--spacing-32);
   --padding-40: var(--spacing-40);
   --padding-80: var(--spacing-80);
